@@ -29,7 +29,7 @@ def GetExpiryDate(chat_id):
     return expires_at
 
 
-@pyrogram.Client.on_message(pyrogram.filters.command(["help", "about"]))
+@pyrogram.Client.on_message(pyrogram.filters.command(["help", "about"]) & pyrogram.filters.user(Config.OWNER_ID))
 async def help_user(bot, update):
     # logger.info(update)
     await bot.send_message(
@@ -41,7 +41,7 @@ async def help_user(bot, update):
     )
 
 
-@pyrogram.Client.on_message(pyrogram.filters.command(["me"]))
+@pyrogram.Client.on_message(pyrogram.filters.command(["me"]) & pyrogram.filters.user(Config.OWNER_ID))
 async def get_me_info(bot, update):
     # logger.info(update)
     chat_id = str(update.from_user.id)
@@ -55,7 +55,7 @@ async def get_me_info(bot, update):
     )
 
 
-@pyrogram.Client.on_message(pyrogram.filters.command(["start"]))
+@pyrogram.Client.on_message(pyrogram.filters.command(["start"]) & pyrogram.filters.user(Config.OWNER_ID))
 async def start(bot, update):
     # logger.info(update)
     await bot.send_message(
@@ -65,7 +65,7 @@ async def start(bot, update):
     )
 
 
-@pyrogram.Client.on_message(pyrogram.filters.command(["upgrade"]))
+@pyrogram.Client.on_message(pyrogram.filters.command(["upgrade"]) & pyrogram.filters.user(Config.OWNER_ID))
 async def upgrade(bot, update):
     # logger.info(update)
     await bot.send_message(
