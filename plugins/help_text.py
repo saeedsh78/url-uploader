@@ -58,7 +58,7 @@ async def get_me_info(bot, update):
 @pyrogram.Client.on_message(pyrogram.filters.command(["start"]) & pyrogram.filters.user(Config.OWNER_ID))
 async def start(bot, update):
     # logger.info(update)
-    print(update)
+    print(update.id)
     await bot.send_message(
         chat_id=update.chat.id,
         text=Translation.START_TEXT,
